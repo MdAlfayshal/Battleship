@@ -133,7 +133,7 @@ static class UtilityFunctions
 
 				draw = true;
 
-				switch (grid.Item (row, col)) {
+				switch (grid[row, col]) {
 				case TileView.Ship:
 					if (small)
 						fillColor = SMALL_SEA;
