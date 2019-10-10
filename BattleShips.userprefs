@@ -6,26 +6,12 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Battleship Status">
     <Files>
-      <File FileName="src\DiscoveryController.cs" Line="56" Column="45" />
-      <File FileName="src\UtilityFunctions.cs" Line="16" Column="37" />
-      <File FileName="src\GameResources.cs" Line="291" Column="41" />
-      <File FileName="src\Model\ISeaGrid.cs" Line="32" Column="16" />
+      <File FileName="src\GameController.cs" Line="363" Column="17" />
+      <File FileName="src\Model\AIMediumPlayer.cs" Line="1" Column="1" />
+      <File FileName="src\Model\AIHardPlayer.cs" Line="1" Column="1" />
+      <File FileName="src\Model\AIPlayer.cs" Line="21" Column="20" />
       <File FileName="Battleship Status" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="BattleShips" expanded="True">
-            <Node name="BattleShips" expanded="True">
-              <Node name="src" expanded="True">
-                <Node name="Model" expanded="True" />
-                <Node name="UtilityFunctions.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />

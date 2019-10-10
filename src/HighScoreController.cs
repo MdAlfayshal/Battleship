@@ -23,7 +23,7 @@ static class HighScoreController
 	/// The score structure is used to keep the name and
 	/// score of the top players together.
 	/// </summary>
-	private struct Score : IComparable
+	public struct Score : IComparable
 	{
 		public string Name;
 
@@ -164,12 +164,11 @@ static class HighScoreController
 	public static void ReadHighScore (int value)
 	{
 		const int ENTRY_TOP = 500;
-
 		if (_Scores.Count == 0)
 			LoadScores ();
 
 		//is it a high score
-		if (value > _Scores [i] (_Scores.Count - 1).Value) {
+		if (value > _Scores [_Scores.Count - 1].Value) {
 			Score s = new Score ();
 			s.Value = value;
 
