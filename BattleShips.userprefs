@@ -8,7 +8,8 @@
     <Files>
       <File FileName="src\Model\TileView.cs" Line="39" Column="1" />
       <File FileName="src\Model\Player.cs" Line="40" Column="42" />
-      <File FileName="src\Model\Ship.cs" Line="110" Column="74" />
+      <File FileName="src\Model\Ship.cs" Line="125" Column="3" />
+      <File FileName="src\GameResources.cs" Line="298" Column="23" />
       <File FileName="Battleship Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
