@@ -11,7 +11,7 @@
       <File FileName="src\Model\AIHardPlayer.cs" Line="1" Column="1" />
       <File FileName="src\Model\AIPlayer.cs" Line="21" Column="20" />
       <File FileName="src\Model\AIEasyPlayer.cs" Line="63" Column="16" />
-      <File FileName="src\MenuController.cs" Line="178" Column="37" />
+      <File FileName="src\MenuController.cs" Line="293" Column="31" />
       <File FileName="Battleship Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
