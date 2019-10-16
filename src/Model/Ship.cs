@@ -1,10 +1,5 @@
-
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 // using System.Data;
-using System.Diagnostics;
 /// <summary>
 /// A Ship has all the details about itself. For example the shipname,
 /// size, number of hits taken and the location. Its able to add tiles,
@@ -34,7 +29,7 @@ public class Ship
 				return "Aircraft Carrier";
 			}
 
-			return _shipName.ToString();
+			return _shipName.ToString ();
 		}
 	}
 
@@ -74,10 +69,10 @@ public class Ship
 		get { return _direction; }
 	}
 
-	public Ship(ShipName ship)
+	public Ship (ShipName ship)
 	{
 		_shipName = ship;
-		_tiles = new List<Tile>();
+		_tiles = new List<Tile> ();
 
 		//gets the ship size from the enumarator
 		_sizeOfShip = (int)_shipName;
@@ -87,23 +82,23 @@ public class Ship
 	/// Add tile adds the ship tile
 	/// </summary>
 	/// <param name="tile">one of the tiles the ship is on</param>
-	public void AddTile(Tile tile)
+	public void AddTile (Tile tile)
 	{
-		_tiles.Add(tile);
+		_tiles.Add (tile);
 	}
 
 	/// <summary>
 	/// Remove clears the tile back to a sea tile
 	/// </summary>
-	public void Remove()
+	public void Remove ()
 	{
 		foreach (Tile tile in _tiles) {
-			tile.ClearShip();
+			tile.ClearShip ();
 		}
-		_tiles.Clear();
+		_tiles.Clear ();
 	}
 
-	public void Hit()
+	public void Hit ()
 	{
 		_hitsTaken = _hitsTaken + 1;
 	}
@@ -126,7 +121,7 @@ public class Ship
 	/// <param name="direction"></param>
 	/// <param name="row"></param>
 	/// <param name="col"></param>
-	internal void Deployed(Direction direction, int row, int col)
+	internal void Deployed (Direction direction, int row, int col)
 	{
 		_row = row;
 		_col = col;

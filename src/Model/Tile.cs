@@ -1,23 +1,18 @@
-
-using Microsoft.VisualBasic;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 // using System.Data;
-using System.Diagnostics;
 /// <summary>
 /// Tile knows its location on the grid, if it is a ship and if it has been
 /// shot before
 /// </summary>
 public class Tile
 {
-		//the row value of the tile
+	//the row value of the tile
 	private readonly int _RowValue;
-		//the column value of the tile
+	//the column value of the tile
 	private readonly int _ColumnValue;
-		//the ship the tile belongs to
+	//the ship the tile belongs to
 	private Ship _Ship = null;
-		//the tile has been shot at
+	//the tile has been shot at
 	private bool _Shot = false;
 
 	/// <summary>
@@ -57,10 +52,10 @@ public class Tile
 			if (_Ship == null) {
 				_Ship = value;
 				if (value != null) {
-					_Ship.AddTile(this);
+					_Ship.AddTile (this);
 				}
 			} else {
-				throw new InvalidOperationException("There is already a ship at [" + Row + ", " + Column + "]");
+				throw new InvalidOperationException ("There is already a ship at [" + Row + ", " + Column + "]");
 			}
 		}
 	}
@@ -71,7 +66,7 @@ public class Tile
 	/// <param name="row">the row on the grid</param>
 	/// <param name="col">the col on the grid</param>
 	/// <param name="ship">what ship it is</param>
-	public Tile(int row, int col, Ship ship)
+	public Tile (int row, int col, Ship ship)
 	{
 		_RowValue = row;
 		_ColumnValue = col;
@@ -81,7 +76,7 @@ public class Tile
 	/// <summary>
 	/// Clearship will remove the ship from the tile
 	/// </summary>
-	public void ClearShip()
+	public void ClearShip ()
 	{
 		_Ship = null;
 	}
@@ -117,15 +112,15 @@ public class Tile
 	/// Shoot allows a tile to be shot at, and if the tile has been hit before
 	/// it will give an error
 	/// </summary>
-	internal void Shoot()
+	internal void Shoot ()
 	{
 		if ((false == Shot)) {
 			Shot = true;
 			if (_Ship != null) {
-				_Ship.Hit();
+				_Ship.Hit ();
 			}
 		} else {
-			throw new ApplicationException("You have already shot this square");
+			throw new ApplicationException ("You have already shot this square");
 		}
 	}
 }
