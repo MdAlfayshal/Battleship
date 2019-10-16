@@ -7,6 +7,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Battleship Status">
     <Files>
       <File FileName="src\Model\TileView.cs" Line="39" Column="1" />
+      <File FileName="src\Model\Player.cs" Line="40" Column="42" />
+      <File FileName="src\Model\Ship.cs" Line="125" Column="67" />
       <File FileName="Battleship Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
