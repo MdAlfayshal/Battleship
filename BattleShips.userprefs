@@ -6,8 +6,9 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Battleship Status">
     <Files>
-      <File FileName="src\UtilityFunctions.cs" Line="227" Column="41" />
-      <File FileName="..\Downloads\src\src\UtilityFunctions.cs" Line="234" Column="32" />
+      <File FileName="src\UtilityFunctions.cs" Line="232" Column="62" />
+      <File FileName="src\GameResources.cs" Line="42" Column="20" />
+      <File FileName="src\EndingGameController.cs" Line="26" Column="2" />
       <File FileName="Battleship Status" />
     </Files>
     <Pads>
@@ -15,6 +16,9 @@
         <State name="__root__">
           <Node name="BattleShips" expanded="True">
             <Node name="BattleShips" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="images" expanded="True" />
+              </Node>
               <Node name="src" expanded="True">
                 <Node name="UtilityFunctions.cs" selected="True" />
               </Node>

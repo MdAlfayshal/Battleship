@@ -137,6 +137,8 @@
     <WinLibraryFiles Include="lib\win\swingame.rc" />
     <WinLibraryFiles Include="lib\win\zlib1.dll" />
     <None Include="packages.config" />
+    <None Include="Resources\images\lose.jpg" />
+    <None Include="Resources\images\win.jpg" />
   </ItemGroup>
   <Target Name="CopyFiles">
     <Copy SourceFiles="@(MacLibraryFiles)" DestinationFolder="$(OutDir)" />
