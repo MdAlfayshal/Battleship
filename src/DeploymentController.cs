@@ -1,10 +1,11 @@
 using System;
 using SwinGameSDK;
+
 /// <summary>
 /// The DeploymentController controls the players actions
 /// during the deployment phase.
 /// </summary>
-static class DeploymentController
+public static class DeploymentController
 {
 	private const int SHIPS_TOP = 98;
 	private const int SHIPS_LEFT = 20;
@@ -93,7 +94,7 @@ static class DeploymentController
 		//Calculate the row/col clicked
 		int row = 0;
 		int col = 0;
-		row = Convert.ToInt32 (Math.Floor ((mouse.Y) / (UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
+		row = Convert.ToInt32 (Math.Floor ((mouse.Y - UtilityFunctions.FIELD_TOP) / (UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
 		col = Convert.ToInt32 (Math.Floor ((mouse.X - UtilityFunctions.FIELD_LEFT) / (UtilityFunctions.CELL_WIDTH + UtilityFunctions.CELL_GAP)));
 
 		if (row >= 0 & row < GameController.HumanPlayer.PlayerGrid.Height) {

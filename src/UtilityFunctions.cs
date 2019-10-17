@@ -129,26 +129,28 @@ static class UtilityFunctions
 				draw = true;
 
 				switch (grid [row, col]) {
-				case TileView.Ship:
-					if (small)
-						fillColor = SMALL_SEA;
-					else
+					case TileView.Ship:
 						draw = false;
-					break;
-				//If small Then fillColor = _SMALL_SHIP Else fillColor = _LARGE_SHIP
-				case TileView.Miss:
-					if (small)
-						fillColor = SMALL_MISS;
-					else
-						fillColor = LARGE_MISS;
-					break;
-				case TileView.Hit:
-					if (small)
-						fillColor = SMALL_HIT;
-					else
-						fillColor = LARGE_HIT;
-					break;
-					//case TileView.Sea:
+						break;
+					//If small Then fillColor = _SMALL_SHIP Else fillColor = _LARGE_SHIP
+					case TileView.Miss:
+						if (small)
+							fillColor = SMALL_MISS;
+						else
+							fillColor = LARGE_MISS;
+						break;
+					case TileView.Hit:
+						if (small)
+							fillColor = SMALL_HIT;
+						else
+							fillColor = LARGE_HIT;
+						break;
+					case TileView.Sea:
+						if (small)
+							fillColor = SMALL_SEA;
+						else
+							draw = false;
+						break;
 
 				}
 
@@ -222,23 +224,23 @@ static class UtilityFunctions
 
 	public static void DrawBackground ()
 	{
-		switch (CurrentState) {
-		case GameState.ViewingMainMenu:
-		case GameState.ViewingGameMenu:
-		case GameState.AlteringSettings:
-		case GameState.ViewingHighScores:
-			SwinGame.DrawBitmap (GameResources.GameImage ("Menu"), 0, 0);
-			break;
-		case GameState.Discovering:
-		case GameState.EndingGame:
-			SwinGame.DrawBitmap (GameResources.GameImage ("Discovery"), 0, 0);
-			break;
-		case GameState.Deploying:
-			SwinGame.DrawBitmap (GameResources.GameImage ("Deploy"), 0, 0);
-			break;
-		default:
-			SwinGame.ClearScreen ();
-			break;
+		switch (GameController.CurrentState) {
+			case GameState.ViewingMainMenu:
+			case GameState.ViewingGameMenu:
+			case GameState.AlteringSettings:
+			case GameState.ViewingHighScores:
+				SwinGame.DrawBitmap (GameResources.GameImage ("Menu"), 0, 0);
+				break;
+			case GameState.Discovering:
+			case GameState.EndingGame:
+				SwinGame.DrawBitmap (GameResources.GameImage ("Discovery"), 0, 0);
+				break;
+			case GameState.Deploying:
+				SwinGame.DrawBitmap (GameResources.GameImage ("Deploy"), 0, 0);
+				break;
+			default:
+				SwinGame.ClearScreen ();
+				break;
 		}
 
 		SwinGame.DrawFramerate (675, 585, GameResources.GameFont ("CourierSmall"));

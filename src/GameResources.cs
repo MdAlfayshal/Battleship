@@ -1,10 +1,4 @@
-
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using SwinGameSDK;
 
 public static class GameResources
@@ -12,6 +6,7 @@ public static class GameResources
 
 	private static void LoadFonts ()
 	{
+		NewFont ("Arial", "arial.ttf", 15);
 		NewFont ("ArialLarge", "arial.ttf", 80);
 		NewFont ("Courier", "cour.ttf", 14);
 		NewFont ("CourierSmall", "cour.ttf", 8);

@@ -6,7 +6,6 @@ using SwinGameSDK;
 /// </summary>
 static class DiscoveryController
 {
-
 	/// <summary>
 	/// Handles input during the discovery phase of the game.
 	/// </summary>

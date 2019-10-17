@@ -7,7 +7,6 @@ using SwinGameSDK;
 
 static class EndingGameController
 {
-
 	/// <summary>
 	/// Draw the end of the game screen, shows the win/lose state
 	/// </summary>

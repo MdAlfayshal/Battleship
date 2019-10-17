@@ -1,6 +1,6 @@
 using SwinGameSDK;
 
-static class GameLogic
+public static class GameLogic
 {
 	public static void Main ()
 	{
@@ -16,7 +16,7 @@ static class GameLogic
 		do {
 			GameController.HandleUserInput ();
 			GameController.DrawScreen ();
-		} while (!(SwinGame.WindowCloseRequested () == true | UtilityFunctions.CurrentState == GameState.Quitting));
+		} while (!(SwinGame.WindowCloseRequested () == true | GameController.CurrentState == GameState.Quitting));
 
 		SwinGame.StopMusic ();
 
