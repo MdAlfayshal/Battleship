@@ -78,7 +78,7 @@ public static class GameController
 			_ai = new AIHardPlayer (_theGame);
 			break;
 		default:
-			_ai = new AIHardPlayer (_theGame);
+			_ai = new AIEasyPlayer (_theGame);
 			break;
 		}
 
@@ -267,6 +267,10 @@ public static class GameController
 	{
 		//Read incoming input events
 		SwinGame.ProcessEvents ();
+
+		if (SwinGame.KeyTyped (KeyCode.vk_F12)) {
+			SwinGame.ToggleFullScreen ();
+		}
 
 		switch (CurrentState) {
 		case GameState.ViewingMainMenu:
