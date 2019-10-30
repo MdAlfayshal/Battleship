@@ -148,7 +148,7 @@ public static class GameResources
 
 		ShowMessage ("Loading music...", 3);
 		LoadMusic ();
-		SwinGame.Delay (100);
+		SwinGame.Delay (3000);
 
 		SwinGame.Delay (100);
 		ShowMessage ("Game loaded...", 5);
