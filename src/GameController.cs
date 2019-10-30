@@ -276,7 +276,15 @@ public static class GameController
 			SwinGame.ToggleWindowBorder();
 		}
 	
-
+		if (SwinGame.KeyTyped (KeyCode.vk_F3)) {
+			SwinGame.StopMusic ();
+		}
+		if (SwinGame.KeyTyped (KeyCode.vk_F4)) {
+			SwinGame.PauseMusic ();
+		}
+		if (SwinGame.KeyTyped (KeyCode.vk_F5)) {
+			SwinGame.ResumeMusic ();
+		}
 	
 
 		switch (CurrentState) {
