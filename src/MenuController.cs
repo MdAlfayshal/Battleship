@@ -20,6 +20,7 @@ static class MenuController
 			"PLAY",
 			"SETUP",
 			"SCORES",
+			"BG_MUSIC",
 			"QUIT"
 		},
 		new string[] {
@@ -31,8 +32,12 @@ static class MenuController
 			"EASY",
 			"MEDIUM",
 			"HARD"
+		},
+		new string[]{
+			"SPOOKY",
+			"CASUAL",
+			"RETRO"
 		}
-
 	};
 	private const int MENU_TOP = 575;
 	private const int MENU_LEFT = 30;
@@ -44,16 +49,22 @@ static class MenuController
 	private const int TEXT_OFFSET = 0;
 	private const int MAIN_MENU = 0;
 	private const int GAME_MENU = 1;
+	private const int MUSIC_MENU = 3;
 
 	private const int SETUP_MENU = 2;
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 
-	private const int MAIN_MENU_QUIT_BUTTON = 3;
+	private const int MAIN_MENU_QUIT_BUTTON = 4;
+	private const int MAIN_MENU_BG_BUTTON = 3;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
+
+	private const int MUSIC_MENU_SPOOKY = 0;
+	private const int MUSIC_MENU_CASUAL = 1;
+	private const int MUSIC_MENU_RETRO = 2;
 
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
 	private const int GAME_MENU_RETURN_BUTTON = 0;
@@ -78,6 +89,16 @@ static class MenuController
 	{
 		bool handled = false;
 		handled = HandleMenuInput (SETUP_MENU, 1, 1);
+
+		if (!handled) {
+			HandleMenuInput (MAIN_MENU, 0, 0);
+		}
+	}
+
+	public static void HandleMusicMenuInput ()
+	{
+		bool handled = false;
+		handled = HandleMenuInput (MUSIC_MENU, 1, 3);
 
 		if (!handled) {
 			HandleMenuInput (MAIN_MENU, 0, 0);
@@ -165,6 +186,11 @@ static class MenuController
 		DrawButtons (SETUP_MENU, 1, 1);
 	}
 
+	public static void DrawMusic ()
+	{ 
+		DrawButtons (MAIN_MENU);
+		DrawButtons (MUSIC_MENU, 1, 3);
+	}
 	/// <summary>
 	/// Draw the buttons associated with a top level menu.
 	/// </summary>
@@ -245,6 +271,9 @@ static class MenuController
 		case GAME_MENU:
 			PerformGameMenuAction (button);
 			break;
+		case MUSIC_MENU:
+			PerformMusicMenuAction (button);
+			break;
 		}
 	}
 
@@ -266,6 +295,9 @@ static class MenuController
 			break;
 		case MAIN_MENU_QUIT_BUTTON:
 			GameController.EndCurrentState ();
+			break;
+		case MAIN_MENU_BG_BUTTON:
+			GameController.AddNewState (GameState.AlteringMusic);
 			break;
 		}
 	}
@@ -291,6 +323,24 @@ static class MenuController
 		GameController.EndCurrentState ();
 	}
 
+	private static void PerformMusicMenuAction (int button)
+	{
+		switch (button) {
+		case MUSIC_MENU_SPOOKY:
+			SwinGame.StopMusic ();
+			SwinGame.PlayMusic (GameResources.GameMusic ("SpookyBackground"));
+			break;
+		case MUSIC_MENU_CASUAL:
+			SwinGame.StopMusic ();
+			SwinGame.PlayMusic (GameResources.GameMusic ("CasualBackground"));
+			break;
+		case MUSIC_MENU_RETRO:
+			SwinGame.StopMusic ();
+			SwinGame.PlayMusic (GameResources.GameMusic ("RetroBackground"));
+			break;
+		}
+		GameController.EndCurrentState ();
+	}
 	/// <summary>
 	/// The game menu was clicked, perform the button's action.
 	/// </summary>

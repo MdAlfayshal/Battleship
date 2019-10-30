@@ -10,7 +10,7 @@ public static class GameLogic
 		//Load Resources
 		GameResources.LoadResources ();
 
-		SwinGame.PlayMusic (GameResources.GameMusic ("CasualBackground"));
+		SwinGame.PlayMusic (GameResources.GameMusic ("SpookyBackground"));
 
 		//Game Loop
 		do {
