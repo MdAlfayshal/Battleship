@@ -94,7 +94,9 @@ static class MenuController
 			HandleMenuInput (MAIN_MENU, 0, 0);
 		}
 	}
-
+	/// <summary>
+	/// Handles the music menu input from the Main menu.
+	/// </summary>
 	public static void HandleMusicMenuInput ()
 	{
 		bool handled = false;
@@ -185,7 +187,9 @@ static class MenuController
 		DrawButtons (MAIN_MENU);
 		DrawButtons (SETUP_MENU, 1, 1);
 	}
-
+	/// <summary>
+	/// Draws the music menu to the screen.
+	/// </summary>
 	public static void DrawMusic ()
 	{ 
 		DrawButtons (MAIN_MENU);

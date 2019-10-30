@@ -26,6 +26,9 @@ public enum GameState
 	/// </summary>
 	AlteringSettings,
 
+	/// <summary>
+	/// The player is altering music.
+	/// </summary>
 	AlteringMusic,
 
 	/// <summary>
