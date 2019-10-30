@@ -269,8 +269,15 @@ public static class GameController
 		SwinGame.ProcessEvents ();
 
 		if (SwinGame.KeyTyped (KeyCode.vk_F12)) {
-			SwinGame.ToggleFullScreen ();
+			SwinGame.ToggleFullScreen();
 		}
+	
+		if (SwinGame.KeyTyped (KeyCode.vk_F2)) {
+			SwinGame.ToggleWindowBorder();
+		}
+	
+
+	
 
 		switch (CurrentState) {
 		case GameState.ViewingMainMenu:
