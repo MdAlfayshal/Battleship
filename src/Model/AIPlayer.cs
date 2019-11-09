@@ -105,8 +105,6 @@ public abstract class AIPlayer : Player
 
 		//keep hitting until a miss
 		do {
-			Delay ();
-
 			GenerateCoords (ref row, ref column);
 			//generate coordinates for shot
 			result = _game.Shoot (row, column);
