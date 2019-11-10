@@ -18,11 +18,9 @@ static class EndingGameController
 		if (GameController.HumanPlayer.IsDestroyed) {
 			SwinGame.DrawBitmap (GameResources.GameImage ("Loser"), 0, 0);
 			SwinGame.DrawTextLines ("YOU LOSE!", Color.White, Color.Transparent, GameResources.GameFont ("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
-			SwinGame.Delay (500);
 		} else {
 			SwinGame.DrawBitmap (GameResources.GameImage ("Winner"), 0, 0);
 			SwinGame.DrawTextLines ("-- WINNER --", Color.White, Color.Transparent, GameResources.GameFont ("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
-			SwinGame.Delay (500);
 		}
 	}
 
@@ -34,6 +32,7 @@ static class EndingGameController
 	{
 		if (SwinGame.MouseClicked (MouseButton.LeftButton) || SwinGame.KeyTyped (KeyCode.vk_RETURN) || SwinGame.KeyTyped (KeyCode.vk_ESCAPE)) {
 			HighScoreController.ReadHighScore (GameController.HumanPlayer.Score);
+			HighScoreController.SaveScores ();
 			GameController.EndCurrentState ();
 		}
 	}
