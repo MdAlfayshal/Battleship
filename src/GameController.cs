@@ -252,6 +252,12 @@ public static class GameController
 		case ResultOfAttack.GameOver:
 			SwitchState (GameState.EndingGame);
 			break;
+		//case ResultOfAttack.Mine:
+		//	if (object.ReferenceEquals (_theGame.Player, ComputerPlayer))
+		//		AIAttack ();
+		//		AIAttack ();
+		//		AIAttack ();
+		//	break;
 		}
 	}
 

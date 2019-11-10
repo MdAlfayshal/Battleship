@@ -17,7 +17,8 @@ public class Player : IEnumerable<Ship>
 	protected BattleShipsGame _game;
 	private int _shots;
 	private int _hits;
-
+	private int _streak;
+	private int _max;
 	private int _misses;
 	/// <summary>
 	/// Returns the game that the player is part of.
@@ -110,6 +111,13 @@ public class Player : IEnumerable<Ship>
 		get { return _hits; }
 	}
 
+	public int Streak { 
+		get { return _streak;}
+	}
+
+	public int MaxStreak { 
+		get { return _max; }
+	}
 	/// <summary>
 	/// Total number of shots that missed
 	/// </summary>
@@ -188,12 +196,17 @@ public class Player : IEnumerable<Ship>
 		case ResultOfAttack.Hit:
 			_hits += 1;
 			_shots += 1;
+			_streak += 1;
 			break;
 		case ResultOfAttack.Miss:
 			_misses += 1;
 			_shots += 1;
+			_streak = 0;
 			break;
 		}
+
+		if (_max <= _streak)
+			_max = _streak;
 
 		return result;
 	}

@@ -21,7 +21,7 @@ static class HighScoreController
 	public struct Score : IComparable
 	{
 		public string Name;
-
+		public int Streak;
 		public int Value;
 		/// <summary>
 		/// Allows scores to be compared to facilitate sorting
@@ -75,7 +75,8 @@ static class HighScoreController
 			line = input.ReadLine ();
 
 			s.Name = line.Substring (0, NAME_WIDTH);
-			s.Value = Convert.ToInt32 (line.Substring (NAME_WIDTH));
+			s.Value = Convert.ToInt32 (line.Substring (NAME_WIDTH,3));
+			s.Streak = Convert.ToInt32 (line.Substring (6,1));
 			_Scores.Add (s);
 		}
 		input.Close ();
@@ -102,7 +103,7 @@ static class HighScoreController
 		output.WriteLine (_Scores.Count);
 
 		foreach (Score s in _Scores) {
-			output.WriteLine (s.Name + s.Value);
+			output.WriteLine (s.Name + s.Value +s.Streak);
 		}
 
 		output.Close ();
@@ -114,13 +115,14 @@ static class HighScoreController
 	public static void DrawHighScores ()
 	{
 		const int SCORES_HEADING = 40;
-		const int SCORES_TOP = 80;
+		const int SCORES_TOP = 100;
 		const int SCORE_GAP = 30;
 
 		if (_Scores.Count == 0)
 			LoadScores ();
 
 		SwinGame.DrawText ("   High Scores   ", Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_HEADING);
+		SwinGame.DrawText ("Name  Score  Streak", Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT+35, 70);
 
 		//For all of the scores
 		int i = 0;
@@ -131,9 +133,9 @@ static class HighScoreController
 
 			//for scores 1 - 9 use 01 - 09
 			if (i < 9) {
-				SwinGame.DrawText (" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (" " + (i + 1) + ":   " + s.Name + "   " + s.Value + "   " + s.Streak, Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			} else {
-				SwinGame.DrawText (i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (i + 1 + ":   " + s.Name + "   " + s.Value + "   " + s.Streak, Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			}
 		}
 	}
@@ -156,7 +158,7 @@ static class HighScoreController
 	/// <remarks>
 	/// This verifies if the score is a highsSwinGame.
 	/// </remarks>
-	public static void ReadHighScore (int value)
+	public static void ReadHighScore (int value,int streak)
 	{
 		const int ENTRY_TOP = 500;
 		if (_Scores.Count == 0)
@@ -166,6 +168,7 @@ static class HighScoreController
 		if (value > _Scores [_Scores.Count - 1].Value) {
 			Score s = new Score ();
 			s.Value = value;
+			s.Streak = streak;
 
 			GameController.AddNewState (GameState.ViewingHighScores);
 
