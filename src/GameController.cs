@@ -291,6 +291,9 @@ public static class GameController
 		if (SwinGame.KeyTyped (KeyCode.vk_F5)) {
 			SwinGame.ResumeMusic ();
 		}
+		if (SwinGame.KeyTyped (KeyCode.vk_F1)) {
+			SwinGame.TakeScreenshot ("Screenshot");
+		}
 	
 
 		switch (CurrentState) {
