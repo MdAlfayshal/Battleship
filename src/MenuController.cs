@@ -1,5 +1,6 @@
 using SwinGameSDK;
 
+
 /// <summary>
 /// The menu controller handles the drawing and user interactions
 /// from the menus in the game. These include the main menu, game
@@ -20,12 +21,14 @@ static class MenuController
 			"PLAY",
 			"SETUP",
 			"SCORES",
-			"BG_MUSIC",
+			"MUTE",
+			"BGM",
 			"QUIT"
 		},
 		new string[] {
 			"RETURN",
 			"SURRENDER",
+			"MUTE",
 			"QUIT"
 		},
 		new string[] {
@@ -55,6 +58,7 @@ static class MenuController
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
+	private const int MAIN_MENU_MUTE_BUTTON = 3;
 
 	private const int MAIN_MENU_QUIT_BUTTON = 4;
 	private const int MAIN_MENU_BG_BUTTON = 3;
@@ -69,8 +73,9 @@ static class MenuController
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
-
+	private const int GAME_MENU_MUTE_BUTTON = 4;
 	private const int GAME_MENU_QUIT_BUTTON = 2;
+	private static bool isMute = false;
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor (2, 167, 252, 255);
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor (1, 57, 86, 255);
@@ -158,7 +163,13 @@ static class MenuController
 	{
 		//Clears the Screen to Black
 		//SwinGame.DrawText("Main Menu", Color.White, GameFont("ArialLarge"), 50, 50)
-
+		SwinGame.DrawText ("Hotkeys", Color.White, GameResources.GameFont ("Courier"), 15, 10);
+		SwinGame.DrawText ("F1 - Screenshot", Color.White, GameResources.GameFont ("Courier"), 100, 10);
+		SwinGame.DrawText ("F2 - Borderless", Color.White, GameResources.GameFont ("Courier"), 100, 30);
+		SwinGame.DrawText ("F12 - Fullscreen", Color.White, GameResources.GameFont ("Courier"), 350, 10);
+		SwinGame.DrawText ("F3 - Stop Music", Color.White, GameResources.GameFont ("Courier"), 350, 30);
+		SwinGame.DrawText ("F4 - Pause Music", Color.White, GameResources.GameFont ("Courier"), 650, 10);
+		SwinGame.DrawText ("F5 - Resume Music", Color.White, GameResources.GameFont ("Courier"), 650, 30);
 		DrawButtons (MAIN_MENU);
 	}
 
