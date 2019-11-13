@@ -1,6 +1,7 @@
 using SwinGameSDK;
 
 
+
 /// <summary>
 /// The menu controller handles the drawing and user interactions
 /// from the menus in the game. These include the main menu, game
@@ -60,8 +61,8 @@ static class MenuController
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 	private const int MAIN_MENU_MUTE_BUTTON = 3;
 
-	private const int MAIN_MENU_QUIT_BUTTON = 4;
-	private const int MAIN_MENU_BG_BUTTON = 3;
+	private const int MAIN_MENU_QUIT_BUTTON = 5;
+	private const int MAIN_MENU_BG_BUTTON = 4;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
@@ -73,9 +74,10 @@ static class MenuController
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
-	private const int GAME_MENU_MUTE_BUTTON = 4;
-	private const int GAME_MENU_QUIT_BUTTON = 2;
+	private const int GAME_MENU_MUTE_BUTTON = 2;
+	private const int GAME_MENU_QUIT_BUTTON = 4;
 	private static bool isMute = false;
+	private static int bgmPlaying = 1;
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor (2, 167, 252, 255);
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor (1, 57, 86, 255);
@@ -105,7 +107,7 @@ static class MenuController
 	public static void HandleMusicMenuInput ()
 	{
 		bool handled = false;
-		handled = HandleMenuInput (MUSIC_MENU, 1, 3);
+		handled = HandleMenuInput (MUSIC_MENU, 1, 4);
 
 		if (!handled) {
 			HandleMenuInput (MAIN_MENU, 0, 0);
@@ -204,7 +206,7 @@ static class MenuController
 	public static void DrawMusic ()
 	{ 
 		DrawButtons (MAIN_MENU);
-		DrawButtons (MUSIC_MENU, 1, 3);
+		DrawButtons (MUSIC_MENU, 1, 4);
 	}
 	/// <summary>
 	/// Draw the buttons associated with a top level menu.
@@ -237,7 +239,8 @@ static class MenuController
 			btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
 			//SwinGame.FillRectangle(Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT)
 			SwinGame.DrawTextLines (_menuStructure [menu] [i], MENU_COLOR, Color.Black, GameResources.GameFont ("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
-
+			if (_menuStructure [menu] [i] == "MUTE" && isMute == true)
+				SwinGame.DrawTextLines ("UNMUTE", Color.Red, Color.Black, GameResources.GameFont ("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
 			if (SwinGame.MouseDown (MouseButton.LeftButton) & IsMouseOverMenu (i, level, xOffset)) {
 				SwinGame.DrawRectangle (HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 			}
@@ -308,6 +311,9 @@ static class MenuController
 		case MAIN_MENU_TOP_SCORES_BUTTON:
 			GameController.AddNewState (GameState.ViewingHighScores);
 			break;
+		case MAIN_MENU_MUTE_BUTTON:
+			Mute ();
+			break;
 		case MAIN_MENU_QUIT_BUTTON:
 			GameController.EndCurrentState ();
 			break;
@@ -372,9 +378,35 @@ static class MenuController
 			GameController.EndCurrentState ();
 			//end game
 			break;
+		case GAME_MENU_MUTE_BUTTON:
+			Mute ();
+			break;
 		case GAME_MENU_QUIT_BUTTON:
 			GameController.AddNewState (GameState.Quitting);
 			break;
+		}
+	}
+	private static void Mute ()
+	{
+		if (isMute == false) {
+			Audio.CloseAudio ();
+			isMute = true;
+		} else {
+			Audio.OpenAudio ();
+			switch (bgmPlaying) {
+			case 1:
+				SwinGame.PlayMusic (GameResources.GameMusic ("SpookyBackground"));
+				isMute = false;
+				break;
+			case 2:
+				SwinGame.FadeMusicIn (GameResources.GameMusic ("CasualBackground"),3000);
+				isMute = false;
+				break;
+			case 3:
+				SwinGame.FadeMusicIn (GameResources.GameMusic ("RetroBackground"), 3000);
+				isMute = false;
+				break;
+			}
 		}
 	}
 }
