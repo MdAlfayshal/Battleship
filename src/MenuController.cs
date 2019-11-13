@@ -353,17 +353,14 @@ static class MenuController
 		case MUSIC_MENU_SPOOKY:
 			SwinGame.StopMusic ();
 			SwinGame.PlayMusic (GameResources.GameMusic ("SpookyBackground"));
-			bgmPlaying = 1;
 			break;
 		case MUSIC_MENU_CASUAL:
 			SwinGame.StopMusic ();
 			SwinGame.PlayMusic (GameResources.GameMusic ("CasualBackground"));
-			bgmPlaying = 2;
 			break;
 		case MUSIC_MENU_RETRO:
 			SwinGame.StopMusic ();
 			SwinGame.PlayMusic (GameResources.GameMusic ("RetroBackground"));
-			bgmPlaying = 3;
 			break;
 		}
 		GameController.EndCurrentState ();
