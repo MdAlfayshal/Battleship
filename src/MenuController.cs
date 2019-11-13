@@ -30,6 +30,7 @@ static class MenuController
 			"RETURN",
 			"SURRENDER",
 			"MUTE",
+			"RESTART",
 			"QUIT"
 		},
 		new string[] {
@@ -75,6 +76,8 @@ static class MenuController
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
 	private const int GAME_MENU_MUTE_BUTTON = 2;
+	private const int GAME_MENU_RESTART_BUTTON = 3;
+
 	private const int GAME_MENU_QUIT_BUTTON = 4;
 	private static bool isMute = false;
 	private static int bgmPlaying = 1;
@@ -350,14 +353,17 @@ static class MenuController
 		case MUSIC_MENU_SPOOKY:
 			SwinGame.StopMusic ();
 			SwinGame.PlayMusic (GameResources.GameMusic ("SpookyBackground"));
+			bgmPlaying = 1;
 			break;
 		case MUSIC_MENU_CASUAL:
 			SwinGame.StopMusic ();
 			SwinGame.PlayMusic (GameResources.GameMusic ("CasualBackground"));
+			bgmPlaying = 2;
 			break;
 		case MUSIC_MENU_RETRO:
 			SwinGame.StopMusic ();
 			SwinGame.PlayMusic (GameResources.GameMusic ("RetroBackground"));
+			bgmPlaying = 3;
 			break;
 		}
 		GameController.EndCurrentState ();
@@ -381,6 +387,14 @@ static class MenuController
 		case GAME_MENU_MUTE_BUTTON:
 			Mute ();
 			break;
+		case GAME_MENU_RESTART_BUTTON:
+			GameController.EndCurrentState ();
+			//end game menu
+			GameController.EndCurrentState ();
+			//end game
+			GameController.StartGame ();
+			break;
+
 		case GAME_MENU_QUIT_BUTTON:
 			GameController.AddNewState (GameState.Quitting);
 			break;
